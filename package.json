@@ -1,0 +1,37 @@
+{
+  "name": "@relayrtc/react",
+  "version": "0.1.0",
+  "description": "React providers and hooks for RelayRTC rooms, media, messages and connection quality.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "sideEffects": false,
+  "files": ["dist", "README.md", "LICENSE"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/relayrtc/react-sdk.git"
+  },
+  "homepage": "https://github.com/relayrtc/react-sdk#readme",
+  "bugs": "https://github.com/relayrtc/react-sdk/issues",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "publishConfig": { "access": "public" },
+  "peerDependencies": {
+    "@relayrtc/client": "^0.0.0",
+    "react": "^18.3.1 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1",
+    "react": "^18.3.1",
+    "typescript": "^5.7.3"
+  }
+}

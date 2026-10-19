@@ -122,10 +122,10 @@ export function Controls() {
         ? local.microphone.disable()
         : local.microphone.enable())}
       >{microphone?.enabled ? 'Disable microphone' : 'Enable microphone'}</button>
-      <button disabled={!microphone?.enabled} onClick={() => {
-        if (microphone?.muted) local?.microphone.unmute()
-        else local?.microphone.mute()
-      }}>{microphone?.muted ? 'Unmute' : 'Mute'}</button>
+      <button disabled={!microphone?.enabled || microphone.pending} onClick={() => local && run(() => microphone?.muted
+        ? local.microphone.unmute()
+        : local.microphone.mute())
+      }>{microphone?.muted ? 'Unmute' : 'Mute'}</button>
       <button disabled={!local} onClick={() => local && run(() => camera?.enabled
         ? local.camera.disable()
         : local.camera.enable())}
@@ -140,7 +140,7 @@ export function Controls() {
 }
 ```
 
-Microphone and camera controls also support `switchDevice(deviceId)` and capture constraints passed to `enable()`. Screen controls support `mute()` and `unmute()`. Screen audio depends on browser support and the selected capture source.
+Microphone and camera controls also support `switchDevice(deviceId)` and capture constraints passed to `enable()`. Microphone, camera and screen `mute()`/`unmute()` return promises: await them to confirm the server publication state and handle failures. They keep capture open; disable/stop releases it. Screen audio depends on browser support and the selected capture source.
 
 ## Local camera preview
 

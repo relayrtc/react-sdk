@@ -470,3 +470,31 @@ Hooks and `RelayRoom` require `RelayProvider`; misuse throws a clear error. Snap
 React Strict Mode cleanup cancels pending joins, removes subscriptions, and leaves the owned browser client. Each subsequent join has a separate client and stale completions are ignored. Consumer compilation, Strict Mode behavior, real browser calls and publication remain unverified until the requested checks are run.
 
 Server room administration, token issuance, webhook configuration and usage queries belong to the [Node.js SDK](https://github.com/relayrtc/node-sdk).
+
+## Private streaming playback (unreleased)
+
+`BroadcastPlayer` and `useStreamPlayback` are independent of `RelayProvider`/`RelayRoom`. Use the matching local Phase 0 browser-client 0.0.0 build with this React 0.1.0 draft. Development uses the local browser package link; existing published packages may not export these APIs.
+
+```tsx
+import { BroadcastPlayer } from '@relayrtc/react'
+
+// Keep these callbacks stable and authorize the caller on your application backend.
+const source = {
+  getPlayback: async (signal: AbortSignal) => {
+    const response = await fetch('/app-api/playback', { signal, cache: 'no-store' })
+    if (!response.ok) throw new Error('Playback unavailable')
+    return response.json()
+  },
+  getGrant: async (signal: AbortSignal) => {
+    const response = await fetch('/app-api/grant', { method: 'POST', signal, cache: 'no-store' })
+    if (!response.ok) throw new Error('Viewing access unavailable')
+    return response.json()
+  },
+}
+// Native HLS where supported; pass createHlsEngine for other browsers.
+<BroadcastPlayer source={source} muted controls />
+```
+
+Metadata includes streamId/sourceSessionId/generation/state. Grants include url/expiresAt. The player polls at five seconds, renews grants before expiry, reloads source generations, handles blocked autoplay and missing media, and clears polling/network/media resources on unmount. An optional `HlsEngineFactory(media, url, onError, onReady)` returns engine teardown. The runnable local `examples/streaming-foundation/` includes an hls.js adapter. No HLS dependency is forced on applications using native playback.
+
+TypeScript compilation was checked for this streaming addition. Real media interoperability still requires a configured deployment; compilation does not establish live playback.

@@ -1,5 +1,7 @@
 # RelayRTC React SDK
 
+`useRecording` keeps its observed recording and pending command identity when only command callback closures change (for example, consent or the selected recording ID). Command callbacks use their latest implementation. Keep `getRecording` memoized; change its identity when switching the authorized resource/broadcast. Avoid copying an observed ID into state that recreates the same observing client. Broadcast, recording, playback, clip, mixer and schedule polling in the matching browser SDK back off after errors and honor callback errors carrying `status` and `retryAfterMs`; manual retry calls do not bypass an active cooldown.
+
 For long-running calls, pass `refreshToken` to `RelayProvider` and connect it to an authenticated application backend using Node SDK `tokens.renew`. Renewal preserves participant identity, session and permissions. Return `null` to deny access; throw a retryable `RoomError` for temporary failures. Auto-subscription does not configure renewal. Requires matching local API and SDK builds; see `docs/guides/connection-recovery.mdx` in the workspace for the full backend authorization flow.
 
 React providers and hooks for RelayRTC audio, video, screen sharing, participants, messaging and connection quality. The SDK wraps `@relayrtc/client` and leaves your application in control of its interface.

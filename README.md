@@ -501,4 +501,8 @@ const source = {
 
 Metadata includes streamId/sourceSessionId/generation/state. Grants include url/expiresAt. The player polls at five seconds, renews grants before expiry, reloads source generations, handles blocked autoplay and missing media, and clears polling/network/media resources on unmount. An optional `HlsEngineFactory(media, url, onError, onReady)` returns engine teardown. The runnable local `examples/streaming-foundation/` includes an hls.js adapter. No HLS dependency is forced on applications using native playback.
 
+`getHlsPlaybackConfig` is re-exported from the browser SDK. Use `new Hls(getHlsPlaybackConfig('live'))` inside your optional engine adapter for live catch-up defaults: a 3-second playlist-edge target, 8-second recovery threshold, up to 1.1x playback, and a 0.25-second target increase per stall. Override these via the optional second argument (`LivePlaybackOptions`). These are player targets, not guaranteed camera-to-viewer latency. Use `'dvr'` or `'vod'` for retained viewing to disable catch-up and preserve intentional pause/rewind. The helper does not change native HLS or an engine that does not use it.
+
 TypeScript compilation was checked for this streaming addition. Real media interoperability still requires a configured deployment; compilation does not establish live playback.
+
+The HLS defaults include `liveSyncMode: "buffered"` for hls.js 1.7+: recovery uses downloaded media rather than repeatedly seeking ahead of the buffer. Use hls.js 1.7.3 or newer for this behavior. Conservative targets reduce edge starvation but do not eliminate network or delivery stalls.

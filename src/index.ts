@@ -3,6 +3,8 @@
 export { RelayProvider } from './provider.js'
 export { RelayRoom } from './room.js'
 export { BroadcastPlayer, useStreamPlayback } from './broadcast.js'
+export { getHlsPlaybackConfig } from '@relayrtc/client'
+export type { HlsPlaybackConfig, LivePlaybackOptions } from '@relayrtc/client'
 export { useBroadcast } from './use-broadcast.js'
 export type { BroadcastClientOptions, BroadcastStatus, BroadcastOutputStatus, BroadcastOperationStatus, BroadcastSnapshot, BroadcastState } from '@relayrtc/client'
 export type { BroadcastPlayerProps } from './broadcast.js'

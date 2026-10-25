@@ -1,20 +1,26 @@
 "use client";
-import { useEffect, useMemo, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useSyncExternalStore } from "react";
 import { RecordingClient } from "@relayrtc/client";
 import type { RecordingClientOptions } from "@relayrtc/client";
 
 export function useRecording(options: RecordingClientOptions) {
   const { getRecording, start, stop, delete: remove, pollIntervalMs } = options;
+  // Command closures can change with consent/selection without resetting an
+  // observed recording or discarding a command's retry key. getRecording is the
+  // resource boundary: change its identity when switching rooms/broadcasts.
+  const commands = useRef({ start, stop, remove });
+  commands.current = { start, stop, remove };
+  const canStart = !!start, canStop = !!stop, canRemove = !!remove;
   const client = useMemo(
     () =>
       new RecordingClient({
         getRecording,
-        ...(start ? { start } : {}),
-        ...(stop ? { stop } : {}),
-        ...(remove ? { delete: remove } : {}),
+        ...(canStart ? { start: (context: Parameters<NonNullable<RecordingClientOptions["start"]>>[0]) => commands.current.start!(context) } : {}),
+        ...(canStop ? { stop: (context: Parameters<NonNullable<RecordingClientOptions["stop"]>>[0]) => commands.current.stop!(context) } : {}),
+        ...(canRemove ? { delete: (context: Parameters<NonNullable<RecordingClientOptions["delete"]>>[0]) => commands.current.remove!(context) } : {}),
         ...(pollIntervalMs === undefined ? {} : { pollIntervalMs }),
       }),
-    [getRecording, start, stop, remove, pollIntervalMs],
+    [getRecording, canStart, canStop, canRemove, pollIntervalMs],
   );
   const snapshot = useSyncExternalStore(
     client.subscribe,

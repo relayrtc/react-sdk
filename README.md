@@ -1,5 +1,7 @@
 # RelayRTC React SDK
 
+`useRecording` keeps its observed recording and pending command identity when only command callback closures change (for example, consent or the selected recording ID). Command callbacks use their latest implementation. Keep `getRecording` memoized; change its identity when switching the authorized resource/broadcast. Avoid copying an observed ID into state that recreates the same observing client. Broadcast, recording, playback, clip, mixer and schedule polling in the matching browser SDK back off after errors and honor callback errors carrying `status` and `retryAfterMs`; manual retry calls do not bypass an active cooldown.
+
 For long-running calls, pass `refreshToken` to `RelayProvider` and connect it to an authenticated application backend using Node SDK `tokens.renew`. Renewal preserves participant identity, session and permissions. Return `null` to deny access; throw a retryable `RoomError` for temporary failures. Auto-subscription does not configure renewal. Requires matching local API and SDK builds; see `docs/guides/connection-recovery.mdx` in the workspace for the full backend authorization flow.
 
 React providers and hooks for RelayRTC audio, video, screen sharing, participants, messaging and connection quality. The SDK wraps `@relayrtc/client` and leaves your application in control of its interface.
@@ -499,4 +501,8 @@ const source = {
 
 Metadata includes streamId/sourceSessionId/generation/state. Grants include url/expiresAt. The player polls at five seconds, renews grants before expiry, reloads source generations, handles blocked autoplay and missing media, and clears polling/network/media resources on unmount. An optional `HlsEngineFactory(media, url, onError, onReady)` returns engine teardown. The runnable local `examples/streaming-foundation/` includes an hls.js adapter. No HLS dependency is forced on applications using native playback.
 
+`getHlsPlaybackConfig` is re-exported from the browser SDK. Use `new Hls(getHlsPlaybackConfig('live'))` inside your optional engine adapter for live catch-up defaults: a 3-second playlist-edge target, 8-second recovery threshold, up to 1.1x playback, and a 0.25-second target increase per stall. Override these via the optional second argument (`LivePlaybackOptions`). These are player targets, not guaranteed camera-to-viewer latency. Use `'dvr'` or `'vod'` for retained viewing to disable catch-up and preserve intentional pause/rewind. The helper does not change native HLS or an engine that does not use it.
+
 TypeScript compilation was checked for this streaming addition. Real media interoperability still requires a configured deployment; compilation does not establish live playback.
+
+The HLS defaults include `liveSyncMode: "buffered"` for hls.js 1.7+: recovery uses downloaded media rather than repeatedly seeking ahead of the buffer. Use hls.js 1.7.3 or newer for this behavior. Conservative targets reduce edge starvation but do not eliminate network or delivery stalls.

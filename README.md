@@ -1,5 +1,7 @@
 # RelayRTC React SDK
 
+For long-running calls, pass `refreshToken` to `RelayProvider` and connect it to an authenticated application backend using Node SDK `tokens.renew`. Renewal preserves participant identity, session and permissions. Return `null` to deny access; throw a retryable `RoomError` for temporary failures. Auto-subscription does not configure renewal. Requires matching local API and SDK builds; see `docs/guides/connection-recovery.mdx` in the workspace for the full backend authorization flow.
+
 React providers and hooks for RelayRTC audio, video, screen sharing, participants, messaging and connection quality. The SDK wraps `@relayrtc/client` and leaves your application in control of its interface.
 
 This repository implements the React portion of Phase 9. Runtime, build and browser verification have not been run. Installation from the registry requires both this package and the compatible browser client to be published first. The current browser-client contract is version `0.0.0`.
@@ -398,7 +400,7 @@ export function RenewableCall({ token }: { token: string }) {
 }
 ```
 
-These `/api/rtc/...` endpoints belong to your application. The current public token-create endpoint creates a new participant ID, so calling it again is not valid renewal for an existing participant. A public renewal contract preserving identity and permissions is still needed for this flow. The React wrapper does not supply an alternative token issuer. TURN refresh can use the existing scoped credential endpoint through your authorized backend.
+These `/api/rtc/...` endpoints belong to your application. Use Node SDK `tokens.renew` on the authorized backend, storing each replacement as the current token. The token-create endpoint creates a new identity and must not be used for renewal. The React wrapper applies the returned token to the existing session; temporary retryable failures retry before expiry, and `null` denies renewal. TURN refresh uses the scoped credential endpoint through your authorized backend. Both require caller/session authorization.
 
 ## Custom events and room subscriptions
 

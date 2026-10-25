@@ -53,6 +53,8 @@ export type {
   MediaInputDevice,
   MediaPermissionsSnapshot,
   MediaPermissionRequest,
+  CredentialRefreshContext,
+  RoomCredentialSnapshot,
 } from '@relayrtc/client'
 export * from "./use-recording.js";
 export * from "./use-scheduled-broadcast.js";

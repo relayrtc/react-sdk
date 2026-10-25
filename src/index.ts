@@ -2,6 +2,11 @@
 
 export { RelayProvider } from './provider.js'
 export { RelayRoom } from './room.js'
+export { BroadcastPlayer, useStreamPlayback } from './broadcast.js'
+export { useBroadcast } from './use-broadcast.js'
+export type { BroadcastClientOptions, BroadcastStatus, BroadcastOutputStatus, BroadcastOperationStatus, BroadcastSnapshot, BroadcastState } from '@relayrtc/client'
+export type { BroadcastPlayerProps } from './broadcast.js'
+export type { StreamPlaybackOptions, StreamPlaybackMetadata, StreamPlaybackGrant, StreamPlaybackSnapshot, HlsEngineFactory, BroadcastPlaybackState } from '@relayrtc/client'
 export { useMediaTrack, MediaLoader } from './media.js'
 export {
   useRoom,
@@ -33,6 +38,8 @@ export type {
   RelayClientOptions,
   Room,
   RoomConnectionState,
+  MediaConnectionStats,
+  MediaTransportStats,
   RoomEvents,
   RoomErrorCode,
   RoomLocalParticipant,
@@ -47,3 +54,17 @@ export type {
   MediaPermissionsSnapshot,
   MediaPermissionRequest,
 } from '@relayrtc/client'
+export * from "./use-recording.js";
+export * from "./use-scheduled-broadcast.js";
+export * from "./use-restream-source.js";
+export type {RestreamSourceOptions,RestreamSourceSnapshot,RestreamSource,RestreamDetail,RestreamProtocol,RestreamState} from "@relayrtc/client";
+
+export * from "./use-clip.js";
+
+export * from "./use-mixer.js";
+
+export * from "./use-dvr-playback.js";
+export type { DvrPlayback, DvrPolicy, DvrPolicyResource, DvrPlaybackState } from "@relayrtc/client";
+
+export * from "./use-stream-guests.js";
+export type {StreamGuestOptions,StreamGuestSnapshot,StreamGuestCommand,GuestResource,GuestStage,GuestRoster,GuestJoinGrant,GuestMedia} from "@relayrtc/client";

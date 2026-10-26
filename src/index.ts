@@ -8,7 +8,7 @@ export type { HlsPlaybackConfig, LivePlaybackOptions } from '@relayrtc/client'
 export { useBroadcast } from './use-broadcast.js'
 export type { BroadcastClientOptions, BroadcastStatus, BroadcastOutputStatus, BroadcastOperationStatus, BroadcastSnapshot, BroadcastState } from '@relayrtc/client'
 export type { BroadcastPlayerProps } from './broadcast.js'
-export type { StreamPlaybackOptions, StreamPlaybackMetadata, StreamPlaybackGrant, StreamPlaybackSnapshot, HlsEngineFactory, BroadcastPlaybackState } from '@relayrtc/client'
+export type { StreamPlaybackOptions, StreamPlaybackMetadata, StreamPlaybackReadiness, StreamPlaybackGrant, StreamPlaybackSnapshot, HlsEngineFactory, BroadcastPlaybackState } from '@relayrtc/client'
 export { useMediaTrack, MediaLoader } from './media.js'
 export {
   useRoom,

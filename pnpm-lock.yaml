@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@relayrtc/client':
-        specifier: link:../relaykit/packages/client
-        version: link:../relaykit/packages/client
+        specifier: ^0.1.2
+        version: 0.1.2
       '@types/react':
         specifier: ^18.3.1
         version: 18.3.31
@@ -23,14 +23,68 @@ importers:
 
 packages:
 
+  '@lukeed/csprng@1.1.0':
+    resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
+    engines: {node: '>=8'}
+
+  '@lukeed/uuid@2.0.1':
+    resolution: {integrity: sha512-qC72D4+CDdjGqJvkFMMEAtancHUQ7/d/tAiHf64z8MopFDmcrtbcJuerDtFceuAfQJ2pDSfCKCtbqoGBNnwg0w==}
+    engines: {node: '>=8'}
+
+  '@relayrtc/client@0.1.2':
+    resolution: {integrity: sha512-LXRuqPCIIDFR9U+utLUTlS5vrcUZc+MnTFxyVhTbkwo7hOEG/HAtMaZ3qQ/+NFtFuu110cFsELmVPn9ahbTqzw==, tarball: https://registry.npmjs.org/@relayrtc/client/-/client-0.1.2.tgz}
+
+  '@relayrtc/protocol@0.1.2':
+    resolution: {integrity: sha512-OKJB+WPgw0KMm7SdStZVHu9dwkmd0c0RT257Q/BJUIl8uzsrGUzopWJDrgV7w+IGuE2NP6nNcsXbAgBpCl8MxA==, tarball: https://registry.npmjs.org/@relayrtc/protocol/-/protocol-0.1.2.tgz}
+
+  '@relayrtc/types@0.1.2':
+    resolution: {integrity: sha512-UYSh/OH0CwemD9OJiHIlywbx/zwpYzG9ep+kHujuNGoOiASeJKaJ6xKdiDuJDbe58Dx2B1ydCTsLxd48R7eQyA==, tarball: https://registry.npmjs.org/@relayrtc/types/-/types-0.1.2.tgz}
+
+  '@relayrtc/validation@0.1.2':
+    resolution: {integrity: sha512-tWnfWaj2Xap+9yAnziFLn/CPcx+yjzF5z/FEg14gQ6HBa5ihoi/4s5rQEYTHRtSpcVTq3toZ1mvWsXZ4CJfXIA==, tarball: https://registry.npmjs.org/@relayrtc/validation/-/validation-0.1.2.tgz}
+
+  '@types/debug@4.1.13':
+    resolution: {integrity: sha512-KSVgmQmzMwPlmtljOomayoR89W4FynCAi3E8PPs7vmDVPe84hT+vGPKkJfThkmXs0x0jAaa9U8uW8bbfyS2fWw==}
+
+  '@types/events@3.0.3':
+    resolution: {integrity: sha512-trOc4AAUThEz9hapPtSd7wf5tiQKvTtu5b371UxXdTuqzIh0ArcRspRP0i0Viu+LXstIQ1z96t1nsPxT9ol01g==}
+
+  '@types/ms@2.1.0':
+    resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
+
   '@types/prop-types@15.7.15':
     resolution: {integrity: sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==}
 
   '@types/react@18.3.31':
     resolution: {integrity: sha512-vfEqpXTvwT91yhmwdfouStN2hSKwTvyRs8qpLfADyrq/kxDw0hZM7Wk9Ug1FELj8hIby+S/+kQCSRFF32nv2Qw==}
 
+  awaitqueue@3.3.1:
+    resolution: {integrity: sha512-kzMN6Bdfalok/JWZvwDfI704cIyCvHDi6Ez/bApGzNPjGHQhwJ07DzGd3DDzeXH2fjr9P5g8paESFUvYnbs7rA==}
+    engines: {node: '>=22'}
+
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
+
+  debug@4.4.3:
+    resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+
+  events@3.3.0:
+    resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
+    engines: {node: '>=0.8.x'}
+
+  fake-mediastreamtrack@2.2.1:
+    resolution: {integrity: sha512-SITLc7UTDirSdgLGORrlmqjWLJtbtfIz/xO7DwVbJH3f0ds+NQok4ccl/WEzz49NSgiUlXf2wDW0+y5C+TO6EA==}
+    engines: {node: '>=20'}
+
+  h264-profile-level-id@2.3.3:
+    resolution: {integrity: sha512-rPd5gpyWuIfEbBiHC/f9I4wdeCpAhg0aWdYgjMRdVTqhJT22C6VrWTi4hpAAgJad1Vv8BJDEvrzAQTW7CxzmJw==}
+    engines: {node: '>=22'}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -39,16 +93,67 @@ packages:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
 
+  mediasoup-client@3.24.5:
+    resolution: {integrity: sha512-an3eWWk0YvvO327H5+Edj9zIzdho7UJr1l0w7uyCsmzsSP6YQ41KmBTwgUdF49fGuiQFc4IZA5jLmKi62/uiLg==}
+    engines: {node: '>=22'}
+
+  ms@2.1.3:
+    resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
+
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
     engines: {node: '>=0.10.0'}
+
+  sdp-transform@3.0.0:
+    resolution: {integrity: sha512-gfYVRGxjHkGF2NPeUWHw5u6T/KGFtS5/drPms73gaSuMaVHKCY3lpLnGDfswVQO0kddeePoti09AwhYP4zA8dQ==}
+    hasBin: true
+
+  supports-color@11.0.0:
+    resolution: {integrity: sha512-/zyImLdxhdygBIaVX0xTlQhKaCDLCrm665aqHk8xqK/Pa6k61fL6gwQGQq1k31yNyz6x55PppQgF2DMyPQa5xw==}
+    engines: {node: '>=22'}
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
+  zod@4.6.7:
+    resolution: {integrity: sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==}
+
 snapshots:
+
+  '@lukeed/csprng@1.1.0': {}
+
+  '@lukeed/uuid@2.0.1':
+    dependencies:
+      '@lukeed/csprng': 1.1.0
+
+  '@relayrtc/client@0.1.2':
+    dependencies:
+      '@relayrtc/protocol': 0.1.2
+      '@relayrtc/types': 0.1.2
+      mediasoup-client: 3.24.5
+
+  '@relayrtc/protocol@0.1.2':
+    dependencies:
+      '@relayrtc/types': 0.1.2
+      '@relayrtc/validation': 0.1.2
+      zod: 4.6.7
+
+  '@relayrtc/types@0.1.2': {}
+
+  '@relayrtc/validation@0.1.2':
+    dependencies:
+      '@relayrtc/types': 0.1.2
+      zod: 4.6.7
+
+  '@types/debug@4.1.13':
+    dependencies:
+      '@types/ms': 2.1.0
+
+  '@types/events@3.0.3': {}
+
+  '@types/ms@2.1.0': {}
 
   '@types/prop-types@15.7.15': {}
 
@@ -57,7 +162,31 @@ snapshots:
       '@types/prop-types': 15.7.15
       csstype: 3.2.3
 
+  awaitqueue@3.3.1(supports-color@11.0.0):
+    dependencies:
+      debug: 4.4.3(supports-color@11.0.0)
+    transitivePeerDependencies:
+      - supports-color
+
   csstype@3.2.3: {}
+
+  debug@4.4.3(supports-color@11.0.0):
+    dependencies:
+      ms: 2.1.3
+    optionalDependencies:
+      supports-color: 11.0.0
+
+  events@3.3.0: {}
+
+  fake-mediastreamtrack@2.2.1:
+    dependencies:
+      '@lukeed/uuid': 2.0.1
+
+  h264-profile-level-id@2.3.3(supports-color@11.0.0):
+    dependencies:
+      debug: 4.4.3(supports-color@11.0.0)
+    transitivePeerDependencies:
+      - supports-color
 
   js-tokens@4.0.0: {}
 
@@ -65,8 +194,28 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
+  mediasoup-client@3.24.5:
+    dependencies:
+      '@types/debug': 4.1.13
+      '@types/events-alias': '@types/events@3.0.3'
+      awaitqueue: 3.3.1(supports-color@11.0.0)
+      debug: 4.4.3(supports-color@11.0.0)
+      events-alias: events@3.3.0
+      fake-mediastreamtrack: 2.2.1
+      h264-profile-level-id: 2.3.3(supports-color@11.0.0)
+      sdp-transform: 3.0.0
+      supports-color: 11.0.0
+
+  ms@2.1.3: {}
+
   react@18.3.1:
     dependencies:
       loose-envify: 1.4.0
 
+  sdp-transform@3.0.0: {}
+
+  supports-color@11.0.0: {}
+
   typescript@5.9.3: {}
+
+  zod@4.6.7: {}

@@ -1,11 +1,16 @@
 {
   "name": "@relayrtc/react",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "React providers and hooks for RelayRTC rooms, media, messages and connection quality.",
   "license": "Apache-2.0",
   "type": "module",
   "sideEffects": false,
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -18,19 +23,22 @@
     "type": "git",
     "url": "https://github.com/relayrtc/react-sdk.git"
   },
-  "homepage": "https://github.com/relayrtc/react-sdk#readme",
+  "homepage": "https://docs.relayrtc.com/reference/sdk/client/react/overview",
   "bugs": "https://github.com/relayrtc/react-sdk/issues",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepack": "tsc -p tsconfig.json"
   },
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
-    "@relayrtc/client": "^0.0.0",
+    "@relayrtc/client": "^0.1.2",
     "react": "^18.3.1 || ^19.0.0"
   },
   "devDependencies": {
-    "@relayrtc/client": "link:../relaykit/packages/client",
+    "@relayrtc/client": "^0.1.2",
     "@types/react": "^18.3.1",
     "react": "^18.3.1",
     "typescript": "^5.7.3"

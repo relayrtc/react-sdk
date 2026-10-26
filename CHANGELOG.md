@@ -1,7 +1,7 @@
 # Changelog
 
-## Unreleased
+## 0.1.2
 
-- Add independent BroadcastPlayer/useStreamPlayback with an application-authorized source/grant contract, native playback and an optional HLS engine adapter.
-- Handle grant renewal, generation recovery, autoplay interaction, missing media and unmount teardown.
-- Use the local browser-client development link. Requires matching unreleased Phase 0 client; no package was published.
+- Add streaming status hooks, private playback, DVR controls, recording indicators and guest-stage hooks.
+- Expose playback readiness, credential refresh context and HLS playback configuration.
+- Require a compatible 0.1.2 browser client and remove the sibling development link.

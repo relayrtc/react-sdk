@@ -57,10 +57,6 @@ function CallControls() {
 
 Joining does not activate devices. This example enables the microphone only after a click and requires `audio:publish` permission. Add local previews and remote audio/video playback with the [first-call guide](https://docs.relayrtc.com/quickstart) and [media track hook](https://docs.relayrtc.com/reference/sdk/client/react/hooks/useMediaTrack). Leaving or unmounting releases the owned room connection and capture resources.
 
-## Developing the unreleased 0.1.4 source
-
-This GitHub snapshot targets `@relayrtc/client@^0.1.4`. Until that browser SDK version is published, a fresh registry installation cannot resolve the new dependency. The checked-in registry lockfile still describes the previous published dependency set. It must be refreshed with `pnpm install --no-frozen-lockfile --ignore-scripts` after the browser SDK and its shared packages are published, then committed before publishing this React SDK. Local type validation for this snapshot uses the matching local browser SDK build.
-
 ## Documentation
 
 - [React SDK reference](https://docs.relayrtc.com/reference/sdk/client/react/overview)

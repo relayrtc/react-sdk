@@ -3,6 +3,9 @@ import type { JoinOptions, Room, RoomEvents, RoomTextMessage } from '@relayrtc/c
 import type { RelayProviderProps, RelaySnapshot } from './types.js'
 
 const initialSnapshot = (): RelaySnapshot => ({
+  capabilities: null,
+  activity:null,
+  lifecycle: null,
   room: null,
   client: null,
   connectionState: 'disconnected',
@@ -28,7 +31,7 @@ const refreshEvents = [
   'localParticipantUpdated', 'presenceChanged', 'trackPublished', 'trackUnpublished',
   'trackUpdated', 'trackSubscribed', 'trackUnsubscribed', 'trackSubscriptionFailed',
   'connectionQualityChanged', 'connectionDegraded', 'connectionRecovered',
-  'qualityStatsUpdated', 'reconnected', 'credentialsRefreshed',
+  'capabilitiesChanged', 'lifecycleChanged', 'activityChanged', 'qualityStatsUpdated', 'reconnected', 'credentialsRefreshed',
 ] as const satisfies readonly (keyof RoomEvents)[]
 
 export class RelayStore {
@@ -229,6 +232,9 @@ export class RelayStore {
       microphone: room?.microphone.current ?? null,
       camera: room?.camera.current ?? null,
       screen: room?.screen.current ?? null,
+      capabilities: room?.access.current ?? null,
+      activity:room?.activity.current??null,
+      lifecycle: room?.lifecycle.current ?? null,
       ...overrides,
     })
   }

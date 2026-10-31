@@ -11,6 +11,7 @@ export type { BroadcastPlayerProps } from './broadcast.js'
 export type { StreamPlaybackOptions, StreamPlaybackMetadata, StreamPlaybackReadiness, StreamPlaybackGrant, StreamPlaybackSnapshot, HlsEngineFactory, BroadcastPlaybackState } from '@relayrtc/client'
 export { useMediaTrack, MediaLoader } from './media.js'
 export {
+  useRoomAccess,
   useRoom,
   useParticipants,
   useLocalParticipant,
@@ -23,6 +24,7 @@ export type {
   RelayParticipant,
   RelayProviderProps,
   RelayRoomProps,
+  UseRoomAccessResult,
   UseRoomResult,
   UseParticipantsOptions,
   UseTracksOptions,
@@ -72,3 +74,9 @@ export type { DvrPlayback, DvrPolicy, DvrPolicyResource, DvrPlaybackState } from
 
 export * from "./use-stream-guests.js";
 export type {StreamGuestOptions,StreamGuestSnapshot,StreamGuestCommand,GuestResource,GuestStage,GuestRoster,GuestJoinGrant,GuestMedia} from "@relayrtc/client";
+
+export type { RoomCapabilities, ParticipantAccess, UpdateParticipantAccess, RoomRole, RoomParticipantPermission } from "@relayrtc/client";
+export * from './use-room-lifecycle.js'
+export type {RoomLifecycle,UpdateRoomLifecycle,RoomInvitation,CreateRoomInvitation,RedeemRoomInvitation,RoomInvitationBackend} from '@relayrtc/client'
+export * from './use-room-activity.js'
+export type {RoomActivityPolicy,RoomActivitySnapshot,ParticipantActivityState,ParticipantActivityPreferences,PushToTalkController,PushToTalkSnapshot} from '@relayrtc/client'

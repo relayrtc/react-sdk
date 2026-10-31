@@ -1,3 +1,4 @@
+import type { RoomCapabilities, ParticipantAccess, UpdateParticipantAccess } from "@relayrtc/client";
 import type {
   JoinOptions,
   RelayClient,
@@ -63,6 +64,12 @@ export interface UseConnectionQualityResult {
   readonly participantQualities: Room['participantQualities']
 }
 
+export interface UseRoomAccessResult {
+  readonly capabilities: RoomCapabilities | null
+  readonly get: (participantId: string) => Promise<ParticipantAccess>
+  readonly update: (participantId: string, input: UpdateParticipantAccess) => Promise<ParticipantAccess>
+}
+
 export interface UseLocalMediaResult {
   readonly microphone: RoomInputSnapshot | null
   readonly camera: RoomInputSnapshot | null
@@ -90,6 +97,9 @@ export interface MediaLoaderProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface RelaySnapshot extends UseLocalMediaResult, UseConnectionQualityResult {
+  readonly activity:import('@relayrtc/client').RoomActivitySnapshot|null
+  readonly lifecycle: import('@relayrtc/client').RoomLifecycle | null
+  readonly capabilities: RoomCapabilities | null
   readonly room: Room | null
   readonly client: RelayClient | null
   readonly connectionState: RoomConnectionState

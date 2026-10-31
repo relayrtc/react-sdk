@@ -1,6 +1,6 @@
 {
   "name": "@relayrtc/react",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "React providers and hooks for RelayRTC rooms, media, messages and connection quality.",
   "license": "Apache-2.0",
   "type": "module",
@@ -34,11 +34,11 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@relayrtc/client": "^0.1.2",
+    "@relayrtc/client": "^0.1.4",
     "react": "^18.3.1 || ^19.0.0"
   },
   "devDependencies": {
-    "@relayrtc/client": "^0.1.2",
+    "@relayrtc/client": "^0.1.4",
     "@types/react": "^18.3.1",
     "react": "^18.3.1",
     "typescript": "^5.7.3"

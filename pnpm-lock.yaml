@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@relayrtc/client':
-        specifier: ^0.1.2
-        version: 0.1.2
+        specifier: ^0.1.4
+        version: 0.1.4
       '@types/react':
         specifier: ^18.3.1
         version: 18.3.31
@@ -31,17 +31,17 @@ packages:
     resolution: {integrity: sha512-qC72D4+CDdjGqJvkFMMEAtancHUQ7/d/tAiHf64z8MopFDmcrtbcJuerDtFceuAfQJ2pDSfCKCtbqoGBNnwg0w==}
     engines: {node: '>=8'}
 
-  '@relayrtc/client@0.1.2':
-    resolution: {integrity: sha512-LXRuqPCIIDFR9U+utLUTlS5vrcUZc+MnTFxyVhTbkwo7hOEG/HAtMaZ3qQ/+NFtFuu110cFsELmVPn9ahbTqzw==, tarball: https://registry.npmjs.org/@relayrtc/client/-/client-0.1.2.tgz}
+  '@relayrtc/client@0.1.4':
+    resolution: {integrity: sha512-H5XqYPrWkKcy8ZdrZtl1ZWLUVb3+x91sB59grkNGdGwSNIBxuYTMYUrdiR1kIROYlrL9mM0zw6hWV9/wsvqtzA==}
 
-  '@relayrtc/protocol@0.1.2':
-    resolution: {integrity: sha512-OKJB+WPgw0KMm7SdStZVHu9dwkmd0c0RT257Q/BJUIl8uzsrGUzopWJDrgV7w+IGuE2NP6nNcsXbAgBpCl8MxA==, tarball: https://registry.npmjs.org/@relayrtc/protocol/-/protocol-0.1.2.tgz}
+  '@relayrtc/protocol@0.1.4':
+    resolution: {integrity: sha512-9HwBWS2CQWy2h7qG63wPI7dkBZ2f6DMqxVAZfQWlAxV1wqJF5he7lyVtVOymr4Q362guEdw7WCnuQ2anF5/GQA==}
 
-  '@relayrtc/types@0.1.2':
-    resolution: {integrity: sha512-UYSh/OH0CwemD9OJiHIlywbx/zwpYzG9ep+kHujuNGoOiASeJKaJ6xKdiDuJDbe58Dx2B1ydCTsLxd48R7eQyA==, tarball: https://registry.npmjs.org/@relayrtc/types/-/types-0.1.2.tgz}
+  '@relayrtc/types@0.1.4':
+    resolution: {integrity: sha512-IhUezR7qMk9eixDDIE4n2msf1GxmuQ357JgO3jN0Ieh7NeiHnrEQkgW+SAesEIZ2yMP3LeytVvrfAkSp1ZUPvA==}
 
-  '@relayrtc/validation@0.1.2':
-    resolution: {integrity: sha512-tWnfWaj2Xap+9yAnziFLn/CPcx+yjzF5z/FEg14gQ6HBa5ihoi/4s5rQEYTHRtSpcVTq3toZ1mvWsXZ4CJfXIA==, tarball: https://registry.npmjs.org/@relayrtc/validation/-/validation-0.1.2.tgz}
+  '@relayrtc/validation@0.1.4':
+    resolution: {integrity: sha512-VLCCa+Hpux3iSRusEOu4MMBZ2O4RmvuIj4kuZzC8InB0WmiSzyPMeiCGWcHT/cHoLm6Lprfd/W8viU7SBIp9qA==}
 
   '@types/debug@4.1.13':
     resolution: {integrity: sha512-KSVgmQmzMwPlmtljOomayoR89W4FynCAi3E8PPs7vmDVPe84hT+vGPKkJfThkmXs0x0jAaa9U8uW8bbfyS2fWw==}
@@ -128,23 +128,23 @@ snapshots:
     dependencies:
       '@lukeed/csprng': 1.1.0
 
-  '@relayrtc/client@0.1.2':
+  '@relayrtc/client@0.1.4':
     dependencies:
-      '@relayrtc/protocol': 0.1.2
-      '@relayrtc/types': 0.1.2
+      '@relayrtc/protocol': 0.1.4
+      '@relayrtc/types': 0.1.4
       mediasoup-client: 3.24.5
 
-  '@relayrtc/protocol@0.1.2':
+  '@relayrtc/protocol@0.1.4':
     dependencies:
-      '@relayrtc/types': 0.1.2
-      '@relayrtc/validation': 0.1.2
+      '@relayrtc/types': 0.1.4
+      '@relayrtc/validation': 0.1.4
       zod: 4.6.7
 
-  '@relayrtc/types@0.1.2': {}
+  '@relayrtc/types@0.1.4': {}
 
-  '@relayrtc/validation@0.1.2':
+  '@relayrtc/validation@0.1.4':
     dependencies:
-      '@relayrtc/types': 0.1.2
+      '@relayrtc/types': 0.1.4
       zod: 4.6.7
 
   '@types/debug@4.1.13':

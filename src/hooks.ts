@@ -1,9 +1,11 @@
 'use client'
 
 import { useMemo } from 'react'
+import { RoomError } from '@relayrtc/client'
 import type { RoomLocalParticipant, RoomRemoteTrack } from '@relayrtc/client'
 import { useRelaySnapshot, useRelayStore } from './context.js'
 import type {
+  UseRoomAccessResult,
   RelayParticipant,
   UseConnectionQualityResult,
   UseLocalMediaResult,
@@ -61,4 +63,19 @@ export function useConnectionQuality(): UseConnectionQualityResult {
 export function useLocalMedia(): UseLocalMediaResult {
   const { microphone, camera, screen } = useRelaySnapshot()
   return useMemo(() => ({ microphone, camera, screen }), [microphone, camera, screen])
+}
+
+export function useRoomAccess(): UseRoomAccessResult {
+  const { room, capabilities } = useRelaySnapshot()
+  return useMemo(() => ({
+    capabilities,
+    get: async participantId => {
+      if (!room) throw new RoomError('NOT_CONNECTED', 'Join a room before reading access')
+      return room.access.get(participantId)
+    },
+    update: async (participantId, input) => {
+      if (!room) throw new RoomError('NOT_CONNECTED', 'Join a room before changing access')
+      return room.access.update(participantId, input)
+    },
+  }), [room, capabilities])
 }
